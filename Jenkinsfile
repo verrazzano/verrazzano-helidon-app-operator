@@ -1,0 +1,130 @@
+// Copyright (c) 2020, Oracle Corporation and/or its affiliates. 
+// Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
+
+pipeline {
+    options {
+        skipDefaultCheckout true
+        disableConcurrentBuilds()
+    }
+
+    agent {
+        docker {
+            image "${RUNNER_DOCKER_IMAGE}"
+            args "${RUNNER_DOCKER_ARGS}"
+            registryUrl "${RUNNER_DOCKER_REGISTRY_URL}"
+            registryCredentialsId 'ocir-pull-and-push-account'
+        }
+    }
+
+    environment {
+        DOCKER_CI_IMAGE_NAME = 'verrazzano-helidon-app-operator-jenkins'
+        DOCKER_PUBLISH_IMAGE_NAME = 'verrazzano-helidon-app-operator'
+        DOCKER_IMAGE_NAME = "${env.BRANCH_NAME == 'master' ? env.DOCKER_PUBLISH_IMAGE_NAME : env.DOCKER_CI_IMAGE_NAME}"
+        CREATE_LATEST_TAG = "${env.BRANCH_NAME == 'master' ? '1' : '0'}"
+        GOPATH = '/home/opc/go'
+        GO_REPO_PATH = "${GOPATH}/src/github.com/verrazzano"
+        DOCKER_CREDS = credentials('ocir-pull-and-push-account')
+        DOCKER_IMAGE_TAG = "${env.TAG_NAME == null ? env.BUILD_NUMBER:env.TAG_NAME}"
+    }
+
+    stages {
+        stage('Clean workspace and checkout') {
+            steps {
+                checkout scm
+                sh """
+                    echo "${DOCKER_CREDS_PSW}" | docker login ${env.DOCKER_REPO} -u ${DOCKER_CREDS_USR} --password-stdin
+                    rm -rf ${GO_REPO_PATH}/verrazzano-helidon-app-operator
+                    mkdir -p ${GO_REPO_PATH}/verrazzano-helidon-app-operator
+                    tar cf - . | (cd ${GO_REPO_PATH}/verrazzano-helidon-app-operator/ ; tar xf -)
+                """
+            }
+        }
+
+        stage('Build') {
+            when { not { buildingTag() } }
+            steps {
+                sh """
+                    cd ${GO_REPO_PATH}/verrazzano-helidon-app-operator
+                    make push DOCKER_REPO=${env.DOCKER_REPO} DOCKER_NAMESPACE=${env.DOCKER_NAMESPACE} DOCKER_IMAGE_NAME=${DOCKER_IMAGE_NAME} CREATE_LATEST_TAG=${CREATE_LATEST_TAG}
+                """
+            }
+        }
+
+        stage('Third Party License Check') {
+            when { not { buildingTag() } }
+            steps {
+                sh """
+                    cd ${GO_REPO_PATH}/verrazzano-helidon-app-operator
+                    make thirdparty-check
+                """
+            }
+        }
+
+        stage('Unit Tests') {
+            when { not { buildingTag() } }
+            steps {
+                sh """
+                    cd ${GO_REPO_PATH}/verrazzano-helidon-app-operator
+                    make unit-test
+                    make -B coverage
+                    cp coverage.html ${WORKSPACE}
+                    build/scripts/copy-junit-output.sh ${WORKSPACE} 
+                """
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: '**/coverage.html', allowEmptyArchive: true
+                    junit testResults: '**/*test-result.xml', allowEmptyResults: true
+                }
+            }
+        }
+
+        stage('Integration Tests') {
+            when { not { buildingTag() } }
+            steps {
+                sh """
+                    cd ${GO_REPO_PATH}/verrazzano-helidon-app-operator
+                    make integ-test
+                    cp coverage.html ${WORKSPACE}
+                    build/scripts/copy-junit-output.sh ${WORKSPACE} 
+                """
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: '**/coverage.html', allowEmptyArchive: true
+                    junit testResults: '**/*test-result.xml', allowEmptyResults: true
+                    sh """
+                        cd ${GO_REPO_PATH}/verrazzano-helidon-app-operator
+                        make clean-cluster
+                    """
+                }
+            }
+        }
+
+        stage('Scan Image') {
+            when { not { buildingTag() } }
+            steps {
+                clairScan "${env.DOCKER_REPO}/${env.DOCKER_NAMESPACE}/${DOCKER_CI_IMAGE_NAME}:${env.DOCKER_IMAGE_TAG}" 
+            }
+        }
+
+        stage('Publish Image') {
+            when { buildingTag() }
+            steps {
+                sh """
+                    cd ${GO_REPO_PATH}/verrazzano-helidon-app-operator
+                    make push-tag DOCKER_REPO=${env.DOCKER_REPO} DOCKER_NAMESPACE=${env.DOCKER_NAMESPACE} DOCKER_IMAGE_NAME=${env.DOCKER_PUBLISH_IMAGE_NAME}
+                """
+            }
+        }
+    }
+    
+    post {
+        failure {
+            mail to: "${env.BUILD_NOTIFICATION_TO_EMAIL}", from: 'noreply@oracle.com',
+            subject: "Verrazzano: ${env.JOB_NAME} - Failed",
+            body: "Job Failed - \"${env.JOB_NAME}\" build: ${env.BUILD_NUMBER}\n\nView the log at:\n ${env.BUILD_URL}\n\nBlue Ocean:\n${env.RUN_DISPLAY_URL}"
+        }
+    }
+
+}

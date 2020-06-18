@@ -1,0 +1,14 @@
+# Copyright (c) 2020, Oracle Corporation and/or its affiliates.
+# Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: helidon-app
+subjects:
+- kind: ServiceAccount
+  name: helidon-app
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: helidon-app
+  apiGroup: rbac.authorization.k8s.io
