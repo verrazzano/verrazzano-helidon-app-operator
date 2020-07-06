@@ -6,6 +6,7 @@
 package v1beta1
 
 import (
+	"context"
 	time "time"
 
 	verrazzanov1beta1 "github.com/verrazzano/verrazzano-helidon-app-operator/pkg/apis/verrazzano/v1beta1"
@@ -48,13 +49,13 @@ func NewFilteredHelidonAppInformer(client versioned.Interface, namespace string,
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.VerrazzanoV1beta1().HelidonApps(namespace).List(options)
+				return client.VerrazzanoV1beta1().HelidonApps(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.VerrazzanoV1beta1().HelidonApps(namespace).Watch(options)
+				return client.VerrazzanoV1beta1().HelidonApps(namespace).Watch(context.TODO(), options)
 			},
 		},
 		&verrazzanov1beta1.HelidonApp{},

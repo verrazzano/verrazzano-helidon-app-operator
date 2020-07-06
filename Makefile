@@ -66,7 +66,8 @@ build: go-mod
 .PHONY: generate
 generate: go-mod
 	./hack/update-codegen.sh
-	operator-sdk generate openapi
+	operator-sdk generate k8s
+	operator-sdk generate crds
 	./hack/add-crd-header.sh
 
 .PHONY: push

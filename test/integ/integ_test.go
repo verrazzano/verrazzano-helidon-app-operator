@@ -5,25 +5,27 @@ package integ_test
 
 import (
 	"bytes"
+	"context"
 	"fmt"
-	. "github.com/onsi/ginkgo"
-	. "github.com/onsi/gomega"
 	"io"
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-    "k8s.io/api/core/v1"
-	"k8s.io/client-go/kubernetes"
-	"k8s.io/client-go/tools/clientcmd"
-	clientV1 "k8s.io/client-go/kubernetes/typed/core/v1"
 	"os"
 	"path/filepath"
 	"strings"
+
+	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/gomega"
+	"k8s.io/api/core/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/client-go/kubernetes"
+	clientV1 "k8s.io/client-go/kubernetes/typed/core/v1"
+	"k8s.io/client-go/tools/clientcmd"
 )
 
 const Namespace string = "default"
 
 var _ = Describe("Verrazzano Helidon App Operator", func() {
 	It("is deployed", func() {
-		deployment, err := getClientSet().AppsV1().Deployments(Namespace).Get("helidon-app", metav1.GetOptions{})
+		deployment, err := getClientSet().AppsV1().Deployments(Namespace).Get(context.Background(), "helidon-app", metav1.GetOptions{})
 		Expect(err).To(BeNil(), "Received an error while trying to get the helidon-app deployment")
 		Expect(deployment.Spec.Template.Spec.Containers[0].Name).To(Equal("helidon-app"))
 	})
@@ -69,7 +71,7 @@ func isPodRunning(name string, namespace string) bool {
 	GinkgoWriter.Write([]byte("[DEBUG] checking if there is a running pod named " + name + "* in namespace " + namespace + "\n"))
 	clientset := getClientSet()
 	podInterface := clientset.CoreV1().Pods(namespace)
-	pods, err := podInterface.List(metav1.ListOptions{})
+	pods, err := podInterface.List(context.Background(), metav1.ListOptions{})
 	if err != nil {
 		Fail("Could not get list of pods")
 	}
@@ -99,7 +101,7 @@ func isPodRunning(name string, namespace string) bool {
 
 func getPodLogs(podName string, podInterface clientV1.PodInterface) string {
 	req := podInterface.GetLogs(podName, &v1.PodLogOptions{})
-	podLogs, err := req.Stream()
+	podLogs, err := req.Stream(context.Background())
 	if err != nil {
 		return fmt.Sprintf("ERROR Opening Stream: %v", err)
 	}

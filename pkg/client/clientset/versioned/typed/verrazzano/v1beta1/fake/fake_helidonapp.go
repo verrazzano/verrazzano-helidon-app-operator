@@ -6,6 +6,8 @@
 package fake
 
 import (
+	"context"
+
 	v1beta1 "github.com/verrazzano/verrazzano-helidon-app-operator/pkg/apis/verrazzano/v1beta1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
@@ -26,7 +28,7 @@ var helidonappsResource = schema.GroupVersionResource{Group: "verrazzano.io", Ve
 var helidonappsKind = schema.GroupVersionKind{Group: "verrazzano.io", Version: "v1beta1", Kind: "HelidonApp"}
 
 // Get takes name of the helidonApp, and returns the corresponding helidonApp object, and an error if there is any.
-func (c *FakeHelidonApps) Get(name string, options v1.GetOptions) (result *v1beta1.HelidonApp, err error) {
+func (c *FakeHelidonApps) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1beta1.HelidonApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(helidonappsResource, c.ns, name), &v1beta1.HelidonApp{})
 
@@ -37,7 +39,7 @@ func (c *FakeHelidonApps) Get(name string, options v1.GetOptions) (result *v1bet
 }
 
 // List takes label and field selectors, and returns the list of HelidonApps that match those selectors.
-func (c *FakeHelidonApps) List(opts v1.ListOptions) (result *v1beta1.HelidonAppList, err error) {
+func (c *FakeHelidonApps) List(ctx context.Context, opts v1.ListOptions) (result *v1beta1.HelidonAppList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(helidonappsResource, helidonappsKind, c.ns, opts), &v1beta1.HelidonAppList{})
 
@@ -59,14 +61,14 @@ func (c *FakeHelidonApps) List(opts v1.ListOptions) (result *v1beta1.HelidonAppL
 }
 
 // Watch returns a watch.Interface that watches the requested helidonApps.
-func (c *FakeHelidonApps) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeHelidonApps) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(helidonappsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a helidonApp and creates it.  Returns the server's representation of the helidonApp, and an error, if there is any.
-func (c *FakeHelidonApps) Create(helidonApp *v1beta1.HelidonApp) (result *v1beta1.HelidonApp, err error) {
+func (c *FakeHelidonApps) Create(ctx context.Context, helidonApp *v1beta1.HelidonApp, opts v1.CreateOptions) (result *v1beta1.HelidonApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(helidonappsResource, c.ns, helidonApp), &v1beta1.HelidonApp{})
 
@@ -77,7 +79,7 @@ func (c *FakeHelidonApps) Create(helidonApp *v1beta1.HelidonApp) (result *v1beta
 }
 
 // Update takes the representation of a helidonApp and updates it. Returns the server's representation of the helidonApp, and an error, if there is any.
-func (c *FakeHelidonApps) Update(helidonApp *v1beta1.HelidonApp) (result *v1beta1.HelidonApp, err error) {
+func (c *FakeHelidonApps) Update(ctx context.Context, helidonApp *v1beta1.HelidonApp, opts v1.UpdateOptions) (result *v1beta1.HelidonApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(helidonappsResource, c.ns, helidonApp), &v1beta1.HelidonApp{})
 
@@ -88,7 +90,7 @@ func (c *FakeHelidonApps) Update(helidonApp *v1beta1.HelidonApp) (result *v1beta
 }
 
 // Delete takes name of the helidonApp and deletes it. Returns an error if one occurs.
-func (c *FakeHelidonApps) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeHelidonApps) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(helidonappsResource, c.ns, name), &v1beta1.HelidonApp{})
 
@@ -96,15 +98,15 @@ func (c *FakeHelidonApps) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeHelidonApps) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(helidonappsResource, c.ns, listOptions)
+func (c *FakeHelidonApps) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(helidonappsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &v1beta1.HelidonAppList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched helidonApp.
-func (c *FakeHelidonApps) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1beta1.HelidonApp, err error) {
+func (c *FakeHelidonApps) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1beta1.HelidonApp, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(helidonappsResource, c.ns, name, pt, data, subresources...), &v1beta1.HelidonApp{})
 

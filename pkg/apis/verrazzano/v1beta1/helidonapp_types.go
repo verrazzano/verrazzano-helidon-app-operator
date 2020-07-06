@@ -24,7 +24,7 @@ type HelidonAppSpec struct {
 	// The docker image to pull
 	Image string `json:"image"`
 	// The Kubernetes docker secrets for pulling images
-	// +listType=set
+	// +x-kubernetes-list-type=set
 	ImagePullSecrets []corev1.LocalObjectReference `json:"imagePullSecrets,omitempty"`
 	// The Kubernetes pull policy for pulling the image
 	ImagePullPolicy corev1.PullPolicy `json:"imagePullPolicy,omitempty"`
@@ -39,17 +39,17 @@ type HelidonAppSpec struct {
 	// Port to be used for service targetPort - defaults to 8080
 	TargetPort int32 `json:"targetPort,omitempty"`
 	// Array of environment variables for image
-	// +listType=set
+	// +x-kubernetes-list-type=set
 	Env []corev1.EnvVar `json:"env,omitempty"`
 	// InitContainers holds a list of initialization containers that should
 	// be run before starting the main container in this pod.
-	// +listType=set
+	// +x-kubernetes-list-type=set
 	InitContainers []corev1.Container `json:"initContainers,omitempty"`
 	// Containers to be included in the pod
-	// +listType=set
+	// +x-kubernetes-list-type=set
 	Containers []corev1.Container `json:"containers,omitempty"`
 	// Volumes to be created in the pod
-	// +listType=set
+	// +x-kubernetes-list-type=set
 	Volumes []corev1.Volume `json:"volumes,omitempty"`
 }
 
