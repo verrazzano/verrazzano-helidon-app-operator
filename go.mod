@@ -13,8 +13,8 @@ require (
 	github.com/onsi/ginkgo v1.14.0
 	github.com/onsi/gomega v1.10.1
 	github.com/operator-framework/operator-sdk v0.12.0
+	github.com/pkg/errors v0.9.0 // indirect
 	github.com/rs/zerolog v1.19.0
-	github.com/sclevine/agouti v3.0.0+incompatible // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/stretchr/testify v1.4.0
 	golang.org/x/net v0.0.0-20200625001655-4c5254603344 // indirect
@@ -35,7 +35,6 @@ require (
 	k8s.io/gengo v0.0.0-20191010091904-7fa3014cb28f
 	k8s.io/kube-openapi v0.0.0-20190918143330-0270cf2f1c1d
 	sigs.k8s.io/controller-runtime v0.3.0
-	sigs.k8s.io/kind v0.7.0 // indirect
 )
 
 replace (
