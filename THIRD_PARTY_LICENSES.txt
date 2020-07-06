@@ -2,6 +2,7 @@ github.com/verrazzano/verrazzano-helidon-app-operator
 -------- Copyrights
 Copyright (c) 2020 Oracle America, Inc. and its affiliates. 
 # Copyright (c) 2020, Oracle Corporation and/or its affiliates.
+// Copyright (c) 2020, Oracle and/or its affiliates.
 // Copyright (c) 2020, Oracle Corporation and/or its affiliates.
 
 ======== License
@@ -713,6 +714,21 @@ github.com/samuel/go-zookeeper
 -------- Copyrights
 Copyright (c) 2013, Samuel Stauffer <samuel@descolada.com>
 Copyright 2012 Google Inc.
+Copyright (c) 2014 CloudFlare Inc.
+// Copyright 2011 The Go Authors. All rights reserved.
+// Copyright 2013 The Go Authors. All rights reserved.
+// Copyright 2012 The Go Authors.  All rights reserved.
+var program = `// Copyright 2013 The Go Authors. All rights reserved.
+// Copyright 2009 The Go Authors. All rights reserved.
+// Copyright 2013 The Go Authors.  All rights reserved.
+// Copyright 2014 The Go Authors. All rights reserved.
+// Copyright 2016 The Go Authors. All rights reserved.
+// Copyright 2010 The Go Authors. All rights reserved.
+// Copyright 2012 The Go Authors. All rights reserved.
+# Portions created by the Initial Developer are Copyright (C) 1994-2000
+// Copyright 2018 The Go Authors. All rights reserved.
+// Copyright 2015 The Go Authors. All rights reserved.
+Copyright (c) 2014 Kyle Isom <kyle@gokyle.org>
 
 ======== Dependencies Summary
 github.com/samuel/go-zookeeper
@@ -793,6 +809,23 @@ github.com/cznic/b
 Copyright (c) 2014 The b Authors. All rights reserved.
 // Copyright 2014 The b Authors. All rights reserved.
 # Copyright 2014 The b Authors. All rights reserved.
+Copyright (c) 2014 The CC Authors. All rights reserved.
+# Copyright 2016 The CC Authors. All rights reserved.
+// Copyright 2016 The CC Authors. All rights reserved.
+// Copyright 2013 The Go Authors.  All rights reserved.
+// Copyright (c) 2006 Russ Cox,
+ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
+ Copyright (C) 1991, 1999 Free Software Foundation, Inc.
+Copyright (C) 2009 Free Software Foundation, Inc. <http://fsf.org/>
+ Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
+11 of the WIPO copyright treaty adopted on 20 December 1996, or
+Copyright (c) 2009-2011, Zik Saleeba
+Copyright (c) 2017 The CC Authors. All rights reserved.
+# Copyright 2017 The CC Authors. All rights reserved.
+// Copyright 2017 The CC Authors. All rights reserved.
+Copyright © 2009 Free Software Foundation, Inc. <https://fsf.org/>
+ Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+# Copyright (c) 1991-2011 Unicode, Inc.
 
 ======== Dependencies Summary
 github.com/cznic/b
@@ -3272,6 +3305,20 @@ Mozilla Public License, version 2.0
      this License.
 
 1.10. “Modifications”
+-------- Dependency
+github.com/Azure/azure-sdk-for-go
+-------- Copyrights
+   Copyright 2016 Microsoft Corporation
+Copyright 2014-2017 Microsoft
+// Copyright 2019 Microsoft Corporation
+// Copyright 2018 Microsoft Corporation
+// Copyright 2017 Microsoft Corporation
+// Copyright 2018 Microsoft Corporation and contributors
+// Copyright 2017 Microsoft Corporation and contributors.  All rights reserved.
+// Copyright 2018 Microsoft Corporation and contributors.  All rights reserved.
+-------- Notices
+Microsoft Azure-SDK-for-Go
+Copyright 2014-2017 Microsoft
 
      means any of the following:
 
@@ -3295,6 +3342,22 @@ Mozilla Public License, version 2.0
       License, Version 3.0, or any later versions of those licenses.
 
 1.13. “Source Code Form”
+-------- Dependency
+github.com/OneOfOne/xxhash
+-------- Copyrights
+* The C implementation is ([Copyright](https://github.com/Cyan4973/xxHash/blob/master/LICENSE) (c) 2012-2014, Yann Collet)
+
+-------- Dependency
+github.com/aws/aws-sdk-go
+-------- Copyrights
+Copyright 2015 Amazon.com, Inc. or its affiliates. All Rights Reserved. 
+Copyright 2014-2015 Stripe, Inc.
+// Copyright 2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Portions Licensed under the MIT License. Copyright (c) 2016 Carl Jackson
+-------- Notices
+AWS SDK for Go
+Copyright 2015 Amazon.com, Inc. or its affiliates. All Rights Reserved. 
+Copyright 2014-2015 Stripe, Inc.
 
       means the form of the work preferred for making modifications.
 
@@ -3308,6 +3371,37 @@ Mozilla Public License, version 2.0
       otherwise, or (b) ownership of more than fifty percent (50%) of the
       outstanding shares or beneficial ownership of such entity.
 
+-------- Dependency
+github.com/census-instrumentation/opencensus-proto
+-------- Copyrights
+
+-------- Dependency
+github.com/clusterhq/flocker-go
+-------- Copyrights
+   Copyright 2014-2016 ClusterHQ
+
+-------- Dependency
+github.com/codedellemc/goscaleio
+-------- Copyrights
+
+-------- Dependency
+github.com/container-storage-interface/spec
+-------- Copyrights
+
+-------- Dependency
+github.com/containerd/console
+-------- Copyrights
+
+-------- Dependency
+github.com/containerd/containerd
+-------- Copyrights
+   Copyright 2013-2016 Docker, Inc.
+Copyright 2012-2015 Docker, Inc.
+	// Copyright (C) 1999-2008 Novell Inc.
+	// Copyright 2009-2012 Canonical Ltd.
+-------- Notices
+Docker
+Copyright 2012-2015 Docker, Inc.
 
 2. License Grants and Conditions
 
@@ -3340,6 +3434,24 @@ Mozilla Public License, version 2.0
      2.1(b) above, no patent license is granted by a Contributor:
 
      a. for any code that a Contributor has removed from Covered Software; or
+-------- Dependency
+github.com/coreos/etcd
+-------- Copyrights
+Copyright 2014 CoreOS, Inc
+// Copyright 2016 The etcd Authors
+// Copyright 2017 The etcd Authors
+// Copyright 2018 The etcd Authors
+// Copyright 2015 The etcd Authors
+// Copyright 2015 The Go Authors. All rights reserved.
+// Copyright 2013 The Go Authors. All rights reserved.
+// Copyright 2019 The etcd Authors
+// Copyright 2009 The Go Authors. All rights reserved.
+// Copyright 2014 The etcd Authors
+// Copyright 2013 The etcd Authors
+// Copyright 2017 The etcd Lockors
+-------- Notices
+CoreOS Project
+Copyright 2014 CoreOS, Inc
 
      b. for infringements caused by: (i) Your and any other third party’s
         modifications of Covered Software, or (ii) the combination of its
@@ -3354,6 +3466,14 @@ Mozilla Public License, version 2.0
      notice requirements in Section 3.4).
 
 2.4. Subsequent Licenses
+=======
+-------- Dependency
+github.com/coreos/go-oidc
+-------- Copyrights
+Copyright 2014 CoreOS, Inc
+-------- Notices
+CoreOS Project
+Copyright 2014 CoreOS, Inc
 
      No Contributor makes additional grants as a result of Your choice to
      distribute the Covered Software under a subsequent version of this License
@@ -3367,6 +3487,21 @@ Mozilla Public License, version 2.0
      rights to its Contributions conveyed by this License.
 
 2.6. Fair Use
+-------- Dependency
+github.com/coreos/go-systemd
+-------- Copyrights
+Copyright 2018 CoreOS, Inc
+// Copyright 2018 CoreOS, Inc.
+// Copyright 2015 CoreOS, Inc.
+// Copyright 2014 Docker, Inc.
+// Copyright 2015-2018 CoreOS, Inc.
+// Copyright 2016 CoreOS, Inc.
+// Copyright 2015, 2018 CoreOS, Inc.
+Copyright 2015 CoreOS Inc.
+// Copyright 2015 RedHat, Inc.
+-------- Notices
+CoreOS Project
+Copyright 2018 CoreOS, Inc
 
      This License is not intended to limit any rights You have under applicable
      copyright doctrines of fair use, fair dealing, or other equivalents.
@@ -3375,11 +3510,32 @@ Mozilla Public License, version 2.0
 
      Sections 3.1, 3.2, 3.3, and 3.4 are conditions of the licenses granted in
      Section 2.1.
+-------- Dependency
+github.com/coreos/pkg
+-------- Copyrights
+Copyright 2014 CoreOS, Inc
+// Copyright 2015 CoreOS, Inc.
+// Copyright 2016 CoreOS, Inc.
+// Copyright 2016 CoreOS Inc
+-------- Notices
+CoreOS Project
+Copyright 2014 CoreOS, Inc
 
 
 3. Responsibilities
 
 3.1. Distribution of Source Form
+-------- Dependency
+github.com/coreos/prometheus-operator
+-------- Copyrights
+Copyright 2015 CoreOS, Inc
+// Copyright 2019 The prometheus-operator Authors
+// Copyright 2016 The prometheus-operator Authors
+// Copyright 2018 The prometheus-operator Authors
+// Copyright 2017 The prometheus-operator Authors
+-------- Notices
+CoreOS Project
+Copyright 2015 CoreOS, Inc
 
      All distribution of Covered Software in Source Code Form, including any
      Modifications that You create or to which You contribute, must be under the
@@ -3402,6 +3558,23 @@ Mozilla Public License, version 2.0
         or sublicense it under different terms, provided that the license for
         the Executable Form does not attempt to limit or alter the recipients’
         rights in the Source Code Form under this License.
+-------- Dependency
+github.com/docker/docker
+-------- Copyrights
+   Copyright 2013-2018 Docker, Inc.
+Copyright 2012-2017 Docker, Inc.
+Copyright (c) 2013 Honza Pokorny
+Copyright 2015 The Kubernetes Authors.
+	// Copyright (C) 1999-2008 Novell Inc.
+	// Copyright 2009-2012 Canonical Ltd.
+Copyright (C) 1999-2008 Novell Inc.
+Copyright 2009-2012 Canonical Ltd.
+   Copyright 2014-2018 Docker, Inc.
+Copyright (c) 2014-2018 The Docker & Go Authors. All rights reserved.
+// Copyright 2012 The Go Authors. All rights reserved.
+-------- Notices
+Docker
+Copyright 2012-2017 Docker, Inc.
 
 3.3. Distribution of a Larger Work
 
@@ -3476,6 +3649,48 @@ Mozilla Public License, version 2.0
      termination shall survive termination.
 
 6. Disclaimer of Warranty
+-------- Dependency
+github.com/docker/go-units
+-------- Copyrights
+   Copyright 2015 Docker, Inc.
+Copyright © 2015 Docker, Inc.
+
+-------- Dependency
+github.com/docker/libnetwork
+-------- Copyrights
+Code and documentation copyright 2015 Docker, inc. Code released under the Apache 2.0 license. Docs released under Creative commons.
+Copyright (c) 2014-2016 The Docker & Go Authors. All rights reserved.
+// Copyright 2014-2016 The Docker & Go Authors. All rights reserved.
+
+-------- Dependency
+github.com/docker/spdystream
+-------- Copyrights
+   Copyright 2014-2015 Docker, Inc.
+Copyright © 2014-2015 Docker, Inc. All rights reserved, except as follows. Code is released under the Apache 2.0 license. The README.md file, and files in the "docs" folder are licensed under the Creative Commons Attribution 4.0 International License under the terms and conditions set forth in the file "LICENSE.docs". You may obtain a duplicate copy of the same license, titled CC-BY-SA-4.0, at http://creativecommons.org/licenses/by/4.0/.
+// Copyright 2013 The Go Authors. All rights reserved.
+// Copyright 2011 The Go Authors. All rights reserved.
+
+-------- Dependency
+github.com/envoyproxy/go-control-plane
+-------- Copyrights
+// Copyright 2018 Envoyproxy Authors
+// Copyright 2019 Envoyproxy Authors
+
+-------- Dependency
+github.com/envoyproxy/protoc-gen-validate
+-------- Copyrights
+Copyright 2019 Envoy Project Authors
+-------- Notices
+protoc-gen-validate
+Copyright 2019 Envoy Project Authors
+
+Licensed under Apache License 2.0. See LICENSE for terms.
+
+
+-------- Dependency
+github.com/euank/go-kmsg-parser
+-------- Copyrights
+Copyright 2016 Euan Kemp
 
    Covered Software is provided under this License on an “as is” basis, without
    warranty of any kind, either expressed, implied, or statutory, including,
@@ -3564,6 +3779,13 @@ You may include the notice in a location (such as a LICENSE file in a relevant
 directory) where a recipient would be likely to look for such a notice.
 
 You may add additional accurate notices of copyright ownership.
+-------- Dependency
+github.com/googleapis/gnostic
+-------- Copyrights
+// Copyright 2017 Google Inc. All Rights Reserved.
+Copyright 2017, Google Inc.
+// Copyright 2018 Google Inc. All Rights Reserved.
+	"// Copyright 2017 Google Inc. All Rights Reserved.\n" +
 
 Exhibit B - “Incompatible With Secondary Licenses” Notice
 
@@ -3592,6 +3814,12 @@ github.com/hashicorp/go-version
 -------- Dependency
 github.com/hashicorp/hcl
 -------- Copyrights
+=======
+   Copyright 2015 Openstorage.org.
+Copyright (C) 2004, 2006 The Linux Foundation and its contributors.
+Copyright 2010 The Go Authors.  All rights reserved.
+// Copyright 2015 The Go Authors.  All rights reserved.
+// Copyright (C) 2014 Andreas Klauer <Andreas.Klauer@metamorpher.de>
 
 -------- Dependency
 github.com/hashicorp/logutils
@@ -3604,10 +3832,34 @@ github.com/hashicorp/memberlist
 -------- Dependency
 github.com/hashicorp/serf
 -------- Copyrights
+=======
+Copyright 2012 Matt T. Proud (matt.proud@gmail.com)
+// Copyright 2013 Matt T. Proud
+// Copyright 2016 Matt T. Proud
+-------- Notices
+Copyright 2012 Matt T. Proud (matt.proud@gmail.com)
+
 
 -------- Dependency
 github.com/mitchellh/cli
 -------- Copyrights
+Copyright 2013-2015, Mesosphere, Inc.
+# Copyright 2010 The Go Authors.  All rights reserved.
+// Copyright 2010 The Go Authors.  All rights reserved.
+// Copyright 2011 The Go Authors.  All rights reserved.
+// Copyright (c) 2013, Vastech SA (PTY) LTD. All rights reserved.
+// Copyright 2014 The Go Authors.  All rights reserved.
+// Copyright 2012 The Go Authors.  All rights reserved.
+// Copyright 2013 Google Inc. All Rights Reserved.
+Copyright (c) 2009,2014 Google Inc. All rights reserved.
+// Copyright 2011 Google Inc.  All rights reserved.
+// Copyright 2014 Google Inc.  All rights reserved.
+Copyright (c) 2014 Stretchr, Inc.
+// Copyright 2014 The Go Authors. All rights reserved.
+// Copyright 2015 The Go Authors. All rights reserved.
+Copyright 2013 The Camlistore Authors
+-------- Notices
+Copyright 2013-2015, Mesosphere, Inc.
 
 ======== Dependencies Summary
 github.com/hashicorp/consul/api
@@ -3631,6 +3883,14 @@ Mozilla Public License, version 2.0
      creation of, or owns Covered Software.
 
 1.2. “Contributor Version”
+-------- Dependency
+github.com/mindprince/gonvml
+-------- Copyrights
+# Copyright 2017 Google Inc.
+Copyright 1993-2016 NVIDIA Corporation.  All rights reserved.
+Copyright 2017 Google Inc.
+-------- Notices
+Copyright 1993-2016 NVIDIA Corporation.  All rights reserved.
 
      means the combination of the Contributions of others (if any) used by a
      Contributor and that particular Contributor’s Contribution.
@@ -3670,6 +3930,31 @@ Mozilla Public License, version 2.0
      means this document.
 
 1.9. “Licensable”
+-------- Dependency
+github.com/opencontainers/go-digest
+-------- Copyrights
+   Copyright 2016 Docker, Inc.
+Copyright © 2016 Docker, Inc. All rights reserved, except as follows. Code is released under the [Apache 2.0 license](LICENSE.code). This `README.md` file and the [`CONTRIBUTING.md`](CONTRIBUTING.md) file are licensed under the Creative Commons Attribution 4.0 International License under the terms and conditions set forth in the file [`LICENSE.docs`](LICENSE.docs). You may obtain a duplicate copy of the same license, titled CC BY-SA 4.0, at http://creativecommons.org/licenses/by-sa/4.0/.
+// Copyright 2017 Docker, Inc.
+
+-------- Dependency
+github.com/opencontainers/image-spec
+-------- Copyrights
+// Copyright 2017 The Linux Foundation
+   Copyright 2016 The Linux Foundation.
+Copyright (C) 2004, 2006 The Linux Foundation and its contributors.
+// Copyright 2016 The Linux Foundation
+
+-------- Dependency
+github.com/opencontainers/runc
+-------- Copyrights
+   Copyright 2014 Docker, Inc.
+Copyright 2012-2015 Docker, Inc.
+ * Copyright 2016 SUSE LLC
+Code and documentation copyright 2014 Docker, inc.
+ * Copyright 2016, 2017 SUSE LLC
+-------- Notices
+runc
 
      means having the right to grant, to the maximum extent possible, whether at the
      time of the initial grant or subsequently, any and all of the rights conveyed by
@@ -3697,6 +3982,11 @@ Mozilla Public License, version 2.0
       means either the GNU General Public License, Version 2.0, the GNU Lesser
       General Public License, Version 2.1, the GNU Affero General Public
       License, Version 3.0, or any later versions of those licenses.
+-------- Dependency
+github.com/opencontainers/runtime-spec
+-------- Copyrights
+   Copyright 2015 The Linux Foundation.
+Copyright (C) 2004, 2006 The Linux Foundation and its contributors.
 
 1.13. “Source Code Form”
 
@@ -4890,6 +5180,8 @@ github.com/opencontainers/runtime-tools
    Copyright 2015 The Linux Foundation.
    Copyright 2013-2016 Docker, Inc.
 
+=======
+>>>>>>> updated logging to use zerolog for JSON output
 -------- Dependency
 github.com/openshift/origin
 -------- Copyrights
@@ -6681,6 +6973,23 @@ License notice for github.com/xdg/stringprep
 
       (a) You must give any other recipients of the Work or
           Derivative Works a copy of this License; and
+-------- Dependency
+github.com/pquerna/ffjson
+-------- Copyrights
+Copyright (c) 2014, Paul Querna
+part of Go, Copyright (c) 2012 The Go Authors.
+ *  Copyright 2015 Paul Querna, Klaus Post
+ *  Copyright 2014 Paul Querna
+// Copyright 2009 The Go Authors. All rights reserved.
+// Copyright 2011 The Go Authors. All rights reserved.
+// Copyright 2010 The Go Authors.  All rights reserved.
+ * Copyright (c) 2007-2014, Lloyd Hilaiel <me@lloyd.io>
+ *  Copyright 2014 Paul Querna, Klaus Post
+// jansson, Copyright (c) 2009-2014 Petri Lehtinen <petri@digip.org>
+ *  Copyright 2016 Paul Querna
+-------- Notices
+ffjson
+Copyright (c) 2014, Paul Querna
 
       (b) You must cause any modified files to carry prominent notices
           stating that You changed the files; and
@@ -6707,6 +7016,24 @@ License notice for github.com/xdg/stringprep
           or as an addendum to the NOTICE text from the Work, provided
           that such additional attribution notices cannot be construed
           as modifying the License.
+-------- Dependency
+github.com/prometheus/client_golang
+-------- Copyrights
+# Copyright 2018 The Prometheus Authors
+Copyright 2012-2015 The Prometheus Authors
+Copyright 2013-2015 Blake Mizerany, Björn Rabenstein
+Copyright 2010 The Go Authors
+Copyright 2013 Matt T. Proud
+// Copyright 2015 The Prometheus Authors
+// Copyright 2017 The Prometheus Authors
+// Copyright 2019 The Prometheus Authors
+// Copyright 2014 The Prometheus Authors
+// Copyright 2018 The Prometheus Authors
+// Copyright 2016 The Prometheus Authors
+// Copyright (c) 2013, The Prometheus Authors
+-------- Notices
+Prometheus instrumentation library for Go applications
+Copyright 2012-2015 The Prometheus Authors
 
       You may add Your own copyright statement to Your modifications and
       may provide additional or different license terms and conditions
@@ -6866,6 +7193,14 @@ Copyright (c) 2009 The Go Authors. All rights reserved.
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
 met:
+-------- Dependency
+github.com/prometheus/client_model
+-------- Copyrights
+# Copyright 2013 Prometheus Team
+Copyright 2012-2015 The Prometheus Authors
+-------- Notices
+Data model artifacts for Prometheus.
+Copyright 2012-2015 The Prometheus Authors
 
    * Redistributions of source code must retain the above copyright
 notice, this list of conditions and the following disclaimer.
@@ -6892,6 +7227,22 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ----------------------------------------------------------------------
 License notice for golang.org/x/text
 ----------------------------------------------------------------------
+-------- Dependency
+github.com/prometheus/common
+-------- Copyrights
+# Copyright 2018 The Prometheus Authors
+Copyright 2015 The Prometheus Authors
+// Copyright 2016 The Prometheus Authors
+// Copyright 2015 The Prometheus Authors
+// Copyright 2018 The Prometheus Authors
+// Copyright 2014 The Prometheus Authors
+Copyright (c) 2011, Open Knowledge Foundation Ltd.
+// Copyright 2013 The Prometheus Authors
+// Copyright 2019 The Prometheus Authors
+// Copyright 2017 The Prometheus Authors
+-------- Notices
+Common libraries shared by Prometheus Go components.
+Copyright 2015 The Prometheus Authors
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -6908,6 +7259,19 @@ distribution.
    * Neither the name of Google Inc. nor the names of its
 contributors may be used to endorse or promote products derived from
 this software without specific prior written permission.
+-------- Dependency
+github.com/prometheus/procfs
+-------- Copyrights
+# Copyright 2018 The Prometheus Authors
+Copyright 2014-2015 The Prometheus Authors
+// Copyright 2017 The Prometheus Authors
+// Copyright 2018 The Prometheus Authors
+// Copyright 2014 Prometheus Team
+// Copyright 2019 The Prometheus Authors
+// Copyright 2017 Prometheus Team
+-------- Notices
+procfs provides functions to retrieve system, kernel and process
+metrics from the pseudo-filesystem proc.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -6956,6 +7320,20 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ----------------------------------------------------------------------
 License notice for golang.org/x/tools/cmd/getgo
 ----------------------------------------------------------------------
+-------- Dependency
+github.com/sergi/go-diff
+-------- Copyrights
+Copyright (c) 2012-2016 The go-diff Authors. All rights reserved.
+> Copyright (c) 2006 Google Inc.
+> Copyright (c) 2012-2016 The go-diff authors. All rights reserved.
+// Copyright (c) 2012-2016 The go-diff authors. All rights reserved.
+// Original library is Copyright (c) 2006 Google Inc.
+
+-------- Dependency
+github.com/soheilhy/cmux
+-------- Copyrights
+Copyright 2016 The CMux Authors. All rights reserved.
+// Copyright 2016 The CMux Authors. All rights reserved.
 
 Copyright (c) 2017 The Go Authors. All rights reserved.
 
@@ -6996,6 +7374,10 @@ go.opencensus.io
 -------- Dependency
 gomodules.xyz/jsonpatch/v2
 -------- Copyrights
+// Copyright 2016, Sander van Harmelen
+// Copyright 2014, Sander van Harmelen
+	pn("// Copyright 2016, Sander van Harmelen")
+# Copyright 2014, Sander van Harmelen
 
 -------- Dependency
 gomodules.xyz/jsonpatch/v3
@@ -7513,6 +7895,11 @@ github.com/census-instrumentation/opencensus-proto
 github.com/cockroachdb/cockroach-go
 github.com/cockroachdb/datadriven
 github.com/containerd/cgroups
+github.com/bazelbuild/bazel-gazelle
+github.com/census-instrumentation/opencensus-proto
+github.com/clusterhq/flocker-go
+github.com/codedellemc/goscaleio
+github.com/container-storage-interface/spec
 github.com/containerd/console
 github.com/containerd/containerd
 github.com/containerd/continuity
@@ -7544,6 +7931,9 @@ github.com/envoyproxy/go-control-plane
 github.com/envoyproxy/protoc-gen-validate
 github.com/garyburd/redigo
 github.com/go-ini/ini
+github.com/envoyproxy/go-control-plane
+github.com/envoyproxy/protoc-gen-validate
+github.com/euank/go-kmsg-parser
 github.com/go-logr/logr
 github.com/go-logr/zapr
 github.com/go-openapi/analysis
@@ -7659,7 +8049,6 @@ sigs.k8s.io/kustomize
 sigs.k8s.io/structured-merge-diff
 sigs.k8s.io/structured-merge-diff/v3
 
-======== License used by Dependencies
 SPDX:Apache-2.0
                                  Apache License
                            Version 2.0, January 2004
@@ -7985,9 +8374,9 @@ Copyright (c) 2012 The Go Authors. All rights reserved.
 github.com/fsnotify/fsnotify
 -------- Copyrights
 Copyright (c) 2012 The Go Authors. All rights reserved.
-Copyright (c) 2012 fsnotify Authors. All rights reserved.
-// Copyright 2012 The Go Authors. All rights reserved.
+Copyright (c) 2012-2019 fsnotify Authors. All rights reserved.
 // Copyright 2010 The Go Authors. All rights reserved.
+// Copyright 2012 The Go Authors. All rights reserved.
 // Copyright 2016 The Go Authors. All rights reserved.
 // Copyright 2015 The Go Authors. All rights reserved.
 // Copyright 2013 The Go Authors. All rights reserved.
@@ -8786,6 +9175,41 @@ gopkg.in/airbrake/gobrake.v2
 Copyright (c) 2014 The Gobrake Authors. All rights reserved.
 
 -------- Dependency
+google.golang.org/protobuf
+-------- Copyrights
+Copyright (c) 2018 The Go Authors. All rights reserved.
+// Copyright 2018 The Go Authors. All rights reserved.
+// Copyright 2019 The Go Authors. All rights reserved.
+// Copyright 2020 The Go Authors. All rights reserved.
+		"// Copyright 2019 The Go Authors. All rights reserved.",
+		"// Copyright 2018 The Go Authors. All rights reserved.",
+// Copyright 2008 Google Inc.  All rights reserved.
+-------- Patents
+Additional IP Rights Grant (Patents)
+
+"This implementation" means the copyrightable works distributed by
+Google as part of the Go project.
+
+Google hereby grants to You a perpetual, worldwide, non-exclusive,
+no-charge, royalty-free, irrevocable (except as stated in this section)
+patent license to make, have made, use, offer to sell, sell, import,
+transfer and otherwise run, modify and propagate the contents of this
+implementation of Go, where such license applies only to those patent
+claims, both currently owned or controlled by Google and acquired in
+the future, licensable by Google that are necessarily infringed by this
+implementation of Go.  This grant does not include claims that would be
+infringed only as a consequence of further modification of this
+implementation.  If you or your agent or exclusive licensee institute or
+order or agree to the institution of patent litigation against any
+entity (including a cross-claim or counterclaim in a lawsuit) alleging
+that this implementation of Go or any code incorporated within this
+implementation of Go constitutes direct or contributory patent
+infringement, or inducement of patent infringement, then any patent
+rights granted to you under this License for this implementation of Go
+shall terminate as of the date such litigation is filed.
+
+
+-------- Dependency
 gopkg.in/fsnotify.v1
 -------- Copyrights
 Copyright (c) 2012 The Go Authors. All rights reserved.
@@ -9072,6 +9496,8 @@ github.com/antihax/optional
 Copyright (c) 2016 Adam Hintz
 
 -------- Dependency
+=======
+>>>>>>> updated logging to use zerolog for JSON output
 github.com/armon/circbuf
 -------- Copyrights
 Copyright (c) 2013 Armon Dadgar
@@ -9614,6 +10040,15 @@ Copyright (C) 2014 by Oleku Konko
 // Copyright 2014 Oleku Konko All rights reserved.
 
 -------- Dependency
+github.com/nxadm/tail
+-------- Copyrights
+# © Copyright 2015 Hewlett Packard Enterprise Development LP
+Copyright (c) 2014 ActiveState
+// Copyright (c) 2015 HPE Software Inc. All rights reserved.
+// Copyright (c) 2013 ActiveState Software Inc. All rights reserved.
+Copyright (C) 2013 99designs
+
+-------- Dependency
 github.com/onsi/ginkgo
 -------- Copyrights
 Copyright (c) 2013-2014 Onsi Fakhouri
@@ -9660,6 +10095,15 @@ Copyright (C) 2012 Rob Figueiredo
 github.com/rs/cors
 -------- Copyrights
 Copyright (c) 2014 Olivier Poitrey <rs@dailymotion.com>
+github.com/rs/xid
+-------- Copyrights
+Copyright (c) 2015 Olivier Poitrey <rs@dailymotion.com>
+
+-------- Dependency
+github.com/rs/zerolog
+-------- Copyrights
+Copyright (c) 2017 Olivier Poitrey
+Copyright (c) 2014, 2015, 2016 Carl Jackson (carl@avtok.com)
 
 -------- Dependency
 github.com/rubenv/sql-migrate
@@ -9690,6 +10134,9 @@ Copyright (c) 2013 Oguz Bilgic
 github.com/shurcooL/httpfs
 -------- Copyrights
 Copyright (c) 2015 Dmitri Shuralyov
+github.com/sclevine/agouti
+-------- Copyrights
+Copyright (c) 2014 Stephen Levine
 
 -------- Dependency
 github.com/shurcooL/sanitized_anchor_name
@@ -9922,6 +10369,8 @@ Copyright (c) 2016 Dominik Honnef
     Copyright (c) 2013 Kamil Kisiel <kamil@kamilkisiel.net>
         Copyright (c) 2009 The Go Authors. All rights reserved.
     Copyright (c) 2018 The Go Authors. All rights reserved.
+> Copyright (c) 2016 Dominik Honnef
+> Copyright (c) 2013 The Go Authors. All rights reserved.
 // Copyright 2013 The Go Authors. All rights reserved.
 // Copyright 2014 The Go Authors. All rights reserved.
 Copyright (c) 2009 The Go Authors. All rights reserved.
@@ -10057,6 +10506,8 @@ github.com/mozillazg/go-httpheader
 github.com/nakagami/firebirdsql
 github.com/ncw/swift
 github.com/olekukonko/tablewriter
+github.com/natefinch/lumberjack
+github.com/nxadm/tail
 github.com/onsi/ginkgo
 github.com/onsi/gomega
 github.com/opentracing/basictracer-go
@@ -10066,11 +10517,14 @@ github.com/peterbourgon/diskv
 github.com/posener/complete
 github.com/robfig/cron
 github.com/rs/cors
+github.com/rs/xid
+github.com/rs/zerolog
 github.com/rubenv/sql-migrate
 github.com/ryanuber/columnize
 github.com/satori/go.uuid
 github.com/shopspring/decimal
 github.com/shurcooL/httpfs
+github.com/sclevine/agouti
 github.com/shurcooL/sanitized_anchor_name
 github.com/shurcooL/vfsgen
 github.com/sirupsen/logrus
