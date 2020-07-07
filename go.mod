@@ -2,8 +2,8 @@ module github.com/verrazzano/verrazzano-helidon-app-operator
 
 require (
 	github.com/go-openapi/spec v0.19.3
-	github.com/onsi/ginkgo v1.14.0
-	github.com/onsi/gomega v1.10.1
+	github.com/onsi/ginkgo v1.12.0
+	github.com/onsi/gomega v1.9.0
 	github.com/operator-framework/operator-sdk v0.18.1
 	github.com/rs/zerolog v1.19.0
 	github.com/stretchr/testify v1.5.1
