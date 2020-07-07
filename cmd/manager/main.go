@@ -103,7 +103,7 @@ func main() {
 	}
 
 	if err = serveCRMetrics(cfg); err != nil {
-		logger.Info().Msgf("Could not generate and serve custom resource metrics, error: %s", err.Error())
+		logger.Warn().Msgf("Could not generate and serve custom resource metrics, error: %s", err.Error())
 	}
 
 	// Add to the below struct any other metrics ports you want to expose.
@@ -114,7 +114,7 @@ func main() {
 	// Create Service object to expose the metrics port(s).
 	service, err := metrics.CreateMetricsService(ctx, cfg, servicePorts)
 	if err != nil {
-		logger.Info().Msgf("Could not create metrics Service, error: %s", err.Error())
+		logger.Warn().Msgf("Could not create metrics Service, error: %s", err.Error())
 	}
 
 	// CreateServiceMonitors will automatically create the prometheus-operator ServiceMonitor resources
@@ -122,11 +122,11 @@ func main() {
 	services := []*v1.Service{service}
 	_, err = metrics.CreateServiceMonitors(cfg, namespace, services)
 	if err != nil {
-		logger.Info().Msgf("Could not create ServiceMonitor object, error: %s", err.Error())
+		logger.Warn().Msgf("Could not create ServiceMonitor object, error: %s", err.Error())
 		// If this operator is deployed to a cluster without the prometheus-operator running, it will return
 		// ErrServiceMonitorNotPresent, which can be used to safely skip ServiceMonitor creation.
 		if err == metrics.ErrServiceMonitorNotPresent {
-			logger.Info().Msgf("Install prometheus-operator in your cluster to create ServiceMonitor objects, error %s", err.Error())
+			logger.Warn().Msgf("Install prometheus-operator in your cluster to create ServiceMonitor objects, error %s", err.Error())
 		}
 	}
 
