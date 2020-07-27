@@ -98,10 +98,6 @@ unit-test: go-install
 coverage:
 	./build/scripts/coverage.sh html
 
-.PHONY: thirdparty-check
-thirdparty-check:
-	./build/scripts/thirdparty_check.sh
-
 .PHONY: integ-test
 integ-test: go-install build
 	echo 'Install KinD...'
