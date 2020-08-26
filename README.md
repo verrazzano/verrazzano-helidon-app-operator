@@ -1,5 +1,4 @@
-[![pipeline status](https://github.com/verrazzano/verrazzano-helidon-app-operator/badges/master/pipeline.svg)](https://github.com/verrazzano/verrazzano-helidon-app-operator/commits/master)
-[![coverage report](https://github.com/verrazzano/verrazzano-helidon-app-operator/badges/master/coverage.svg)](https://github.com/verrazzano/verrazzano-helidon-app-operator/commits/master)
+
 
 # verrazzano-helidon-app-operator
 
