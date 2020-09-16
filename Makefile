@@ -12,6 +12,7 @@ CREATE_LATEST_TAG=0
 
 CODEGEN_PATH = k8s.io/code-generator
 GOPATH ?= ${HOME}/go
+GO ?= GO111MODULE=on GOPRIVATE=github.com/oracle,github.com/verrazzano go
 
 ifeq ($(MAKECMDGOALS),$(filter $(MAKECMDGOALS),push push-tag))
 ifndef DOCKER_REPO
@@ -36,7 +37,28 @@ go-install:
 
 .PHONY: go-fmt
 go-fmt:
-	gofmt -s -e -d $(shell find . -name "*.go" | grep -v /vendor/)
+	gofmt -s -e -d $(shell find . -name "*.go" | grep -v /vendor/) > error.txt
+	if [ -s error.txt ]; then\
+		cat error.txt;\
+		rm error.txt;\
+		exit 1;\
+	fi
+	rm error.txt
+
+.PHONY: go-vet
+go-vet:
+	$(GO) vet $(shell go list ./... | grep -v /vendor/)
+
+.PHONY: go-lint
+go-lint:
+	$(GO) get -u golang.org/x/lint/golint
+	# Don't set exit status when lint generates warnings since generated code is generating warnings.
+	golint $(shell go list ./... | grep -v /vendor/)
+
+.PHONY: go-ineffassign
+go-ineffassign:
+	$(GO) get -u github.com/gordonklaus/ineffassign
+	ineffassign $(shell find . -name "*.go" | grep -v /vendor/)
 
 .PHONY: go-mod
 go-mod:

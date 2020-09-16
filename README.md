@@ -1,4 +1,4 @@
-
+[![Go Report Card](https://goreportcard.com/badge/github.com/verrazzano/verrazzano-helidon-app-operator)](https://goreportcard.com/report/github.com/verrazzano/verrazzano-helidon-app-operator)
 
 # verrazzano-helidon-app-operator
 

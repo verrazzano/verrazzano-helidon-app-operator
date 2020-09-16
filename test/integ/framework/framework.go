@@ -24,8 +24,8 @@ func Setup() error {
 	flag.Parse()
 
 	if *runid == "" {
-		runIdString := "test-" + generateRandomID(3)
-		runid = &runIdString
+		runIDString := "test-" + generateRandomID(3)
+		runid = &runIDString
 	}
 
 	Global = &Framework{

@@ -269,11 +269,10 @@ func newDeployment(cr *verrazzanov1beta1.HelidonApp) *appsv1.Deployment {
 			Replicas: func() *int32 {
 				if cr.Spec.Replicas != nil {
 					return cr.Spec.Replicas
-				} else {
-					// Return default of 1 if not specified
-					var val int32 = 1
-					return &val
 				}
+				// Return default of 1 if not specified
+				var val int32 = 1
+				return &val
 			}(),
 			Selector: &metav1.LabelSelector{
 				MatchLabels: labels,
