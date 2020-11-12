@@ -9,7 +9,8 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/go-logr/logr"
+	"go.uber.org/zap"
+
 	verrazzanov1beta1 "github.com/verrazzano/verrazzano-helidon-app-operator/pkg/apis/verrazzano/v1beta1"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
@@ -22,13 +23,10 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/controller"
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 	"sigs.k8s.io/controller-runtime/pkg/handler"
-	logf "sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/controller-runtime/pkg/manager"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
 	"sigs.k8s.io/controller-runtime/pkg/source"
 )
-
-var log = logf.Log.WithName("controller_helidonapp")
 
 /**
 * USER ACTION REQUIRED: This is a scaffold file intended for the user to modify with their own Controller
@@ -80,9 +78,9 @@ type ReconcileHelidonApp struct {
 // The Controller will requeue the Request to be processed again if the returned error is non-nil or
 // Result.Requeue is true, otherwise upon completion it will remove the work from the queue.
 func (r *ReconcileHelidonApp) Reconcile(request reconcile.Request) (reconcile.Result, error) {
-	reqLogger := log.WithValues("Request.Namespace", request.Namespace, "Request.Name", request.Name)
-	reqLogger.Info("Reconciling HelidonApp")
-
+	// create logger with initialized values for reconciliation
+	reqLogger := zap.S().With("Request.Namespace", request.Namespace, "Request.Name", request.Name)
+	reqLogger.Infow("Reconciling HelidonApp")
 	// Fetch the HelidonApp instance
 	instance := &verrazzanov1beta1.HelidonApp{}
 	err := r.client.Get(context.TODO(), request.NamespacedName, instance)
@@ -96,17 +94,17 @@ func (r *ReconcileHelidonApp) Reconcile(request reconcile.Request) (reconcile.Re
 		}
 
 		// Error reading the object - requeue the request.
-		reqLogger.Error(err, "Failed to get HelidonApp")
+		reqLogger.Errorf("Failed to get HelidonApp, Error: %s", err.Error())
 		return reconcile.Result{}, err
 	}
 
 	// Check if the namespace for the Helidon application exists, if not found create it
 	// Define a new Namespace object
 	namespaceFound := &corev1.Namespace{}
-	reqLogger.Info("Checking if namespace exist")
+	reqLogger.Infow("Checking if namespace exist")
 	err = r.client.Get(context.TODO(), types.NamespacedName{Name: instance.Spec.Namespace}, namespaceFound)
 	if err != nil && errors.IsNotFound(err) {
-		reqLogger.Info("Creating a new namespace", "Name", instance.Spec.Namespace)
+		reqLogger.Infof("Creating a new namespace, Namespace: %s", instance.Spec.Namespace)
 		err = r.client.Create(context.TODO(), newNamespace(instance))
 		if err != nil {
 			return reconcile.Result{}, err
@@ -122,10 +120,10 @@ func (r *ReconcileHelidonApp) Reconcile(request reconcile.Request) (reconcile.Re
 	// Define a new ServiceAccount object
 	if instance.Spec.ServiceAccountName != "" {
 		saFound := &corev1.ServiceAccount{}
-		reqLogger.Info("Checking if serviceaccount exist")
+		reqLogger.Infow("Checking if serviceaccount exist")
 		err = r.client.Get(context.TODO(), types.NamespacedName{Name: instance.Spec.ServiceAccountName, Namespace: instance.Spec.Namespace}, saFound)
 		if err != nil && errors.IsNotFound(err) {
-			reqLogger.Info("Creating a new serviceaccount", "Name", instance.Spec.ServiceAccountName, "Namespace", instance.Spec.Namespace)
+			reqLogger.Infof("Creating a new serviceaccount, Name: %s Namespace: %s", instance.Spec.ServiceAccountName, instance.Spec.Namespace)
 			err = r.client.Create(context.TODO(), newServiceAccount(instance))
 			if err != nil {
 				return reconcile.Result{}, err
@@ -149,13 +147,13 @@ func (r *ReconcileHelidonApp) Reconcile(request reconcile.Request) (reconcile.Re
 
 	// Check if this Deployment already exists
 	deployFound := &appsv1.Deployment{}
-	reqLogger.Info("Checking if deployment exist")
+	reqLogger.Infow("Checking if deployment exist")
 	err = r.client.Get(context.TODO(), types.NamespacedName{Name: deployment.Name, Namespace: deployment.Namespace}, deployFound)
 	if err != nil && errors.IsNotFound(err) {
-		reqLogger.Info("Creating a new Deployment", "Deployment.Namespace", deployment.Namespace, "Deployment.Name", deployment.Name)
+		reqLogger.Infof("Creating a new Deployment. Name: %s Namespace: %s", deployment.Name, deployment.Namespace)
 		err = r.client.Create(context.TODO(), deployment)
 		if err != nil {
-			reqLogger.Error(err, "Failed to create Deployment", "Deployment.Namespace", deployment.Namespace, "Deployment.Name", deployment.Name)
+			reqLogger.Errorf("Failed to create Deployment, Name: %s Namespace: %s, Error: %s", deployment.Name, deployment.Namespace, err.Error())
 			r.updateStatus(reqLogger, instance, "Failed", "Helidon application deployment creation failed: "+err.Error())
 			return reconcile.Result{}, err
 		}
@@ -179,13 +177,13 @@ func (r *ReconcileHelidonApp) Reconcile(request reconcile.Request) (reconcile.Re
 
 	// Check if this Service already exists
 	serviceFound := &corev1.Service{}
-	reqLogger.Info("Checking if service exist")
+	reqLogger.Infow("Checking if service exist")
 	err = r.client.Get(context.TODO(), types.NamespacedName{Name: service.Name, Namespace: service.Namespace}, serviceFound)
 	if err != nil && errors.IsNotFound(err) {
-		reqLogger.Info("Creating a new Service", "Service.Namespace", service.Namespace, "Service.Name", service.Name)
+		reqLogger.Infof("Creating a new Service, Name: %s Namespace %s", service.Name, service.Namespace)
 		err = r.client.Create(context.TODO(), service)
 		if err != nil {
-			reqLogger.Error(err, "Failed to create Service", "Service.Namespace", service.Namespace, "Service.Name", service.Name)
+			reqLogger.Errorf("Failed to create Service, Name: %s Namespace: %s, Error: %s", service.Name, service.Namespace, err.Error())
 			r.updateStatus(reqLogger, instance, "Failed", "Helidon application service creation failed: "+err.Error())
 			return reconcile.Result{}, err
 		}
@@ -206,7 +204,7 @@ func (r *ReconcileHelidonApp) Reconcile(request reconcile.Request) (reconcile.Re
 
 	// Let's update the service if needed
 	if instance.Spec.Port != 0 && instance.Spec.Port != serviceFound.Spec.Ports[0].Port {
-		reqLogger.Info("Updating Service", "Service.Namespace", serviceFound.Namespace, "Service.Name", serviceFound.Name)
+		reqLogger.Infof("Updating Service, Name: %s Namespace: %s", serviceFound.Name, serviceFound.Namespace)
 		serviceFound.Spec.Ports[0].Port = instance.Spec.Port
 		serviceFound.Spec.Ports[0].TargetPort = intstr.IntOrString{
 			Type:   intstr.Int,
@@ -214,7 +212,7 @@ func (r *ReconcileHelidonApp) Reconcile(request reconcile.Request) (reconcile.Re
 		}
 		err = r.client.Update(context.TODO(), serviceFound)
 		if err != nil {
-			reqLogger.Error(err, "Failed to update Service", "Service.Namespace", serviceFound.Namespace, "Service.Name", serviceFound.Name)
+			reqLogger.Errorf("Failed to update Service, Name: %s Namespace: %s, Error: %s", service.Name, service.Namespace, err.Error())
 			r.updateStatus(reqLogger, instance, instance.Status.State, "Helidon application service update failed: "+err.Error())
 			return reconcile.Result{}, err
 		}
@@ -366,7 +364,7 @@ func newServiceAccount(cr *verrazzanov1beta1.HelidonApp) *corev1.ServiceAccount 
 }
 
 // doUpdateIfNeeded does an update if needed
-func (r *ReconcileHelidonApp) doUpdateIfNeeded(reqLogger logr.Logger, cr *verrazzanov1beta1.HelidonApp, deployFound *appsv1.Deployment) error {
+func (r *ReconcileHelidonApp) doUpdateIfNeeded(reqLogger *zap.SugaredLogger, cr *verrazzanov1beta1.HelidonApp, deployFound *appsv1.Deployment) error {
 	updateNeeded := false
 	if !isReplicasEqual(deployFound.Spec.Replicas, cr.Spec.Replicas) {
 		if cr.Spec.Replicas != nil {
@@ -421,10 +419,10 @@ func (r *ReconcileHelidonApp) doUpdateIfNeeded(reqLogger logr.Logger, cr *verraz
 	}
 
 	if updateNeeded {
-		reqLogger.Info("Updating Deployment", "Deployment.Namespace", deployFound.Namespace, "Deployment.Name", deployFound.Name)
+		reqLogger.Infof("Updating Deployment, Name: %s Namespace: %s", deployFound.Name, deployFound.Namespace)
 		err := r.client.Update(context.TODO(), deployFound)
 		if err != nil {
-			reqLogger.Error(err, "Failed to update Deployment", "Deployment.Namespace", deployFound.Namespace, "Deployment.Name", deployFound.Name)
+			reqLogger.Errorf("Failed to update Deployment, Name: %s Namespace: %s, Error: %s", deployFound.Name, deployFound.Namespace, err.Error())
 			r.updateStatus(reqLogger, cr, cr.Status.State, "Helidon application deployment update failed: "+err.Error())
 			return err
 		}
@@ -460,7 +458,7 @@ func isReplicasEqual(existing *int32, target *int32) bool {
 }
 
 // Update the status for the CR
-func (r *ReconcileHelidonApp) updateStatus(reqLogger logr.Logger, cr *verrazzanov1beta1.HelidonApp, state string, message string) error {
+func (r *ReconcileHelidonApp) updateStatus(reqLogger *zap.SugaredLogger, cr *verrazzanov1beta1.HelidonApp, state string, message string) error {
 	cr.Status.State = state
 	cr.Status.LastActionMessage = message
 	t := time.Now().UTC()
@@ -471,7 +469,7 @@ func (r *ReconcileHelidonApp) updateStatus(reqLogger logr.Logger, cr *verrazzano
 	// Update status in CR
 	err := r.client.Status().Update(context.TODO(), cr)
 	if err != nil {
-		reqLogger.Error(err, "Failed to update Helidon application status")
+		reqLogger.Errorf("Failed to update Helidon application status, Error: %s", err.Error())
 		return err
 	}
 	return nil
