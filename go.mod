@@ -7,6 +7,7 @@ require (
 	github.com/operator-framework/operator-sdk v0.18.1
 	github.com/stretchr/testify v1.5.1
 	go.uber.org/zap v1.16.0
+	golang.org/x/tools v0.0.0-20200616195046-dc31b401abb5 // indirect
 	k8s.io/api v0.18.2
 	k8s.io/apimachinery v0.18.2
 	k8s.io/client-go v12.0.0+incompatible

@@ -62,6 +62,7 @@ go-ineffassign:
 .PHONY: go-mod
 go-mod:
 	go mod vendor
+	go mod tidy
 
 	# go mod vendor only copies the .go files.  Also need
 	# to populate the k8s.io/code-generator folder with the
@@ -85,11 +86,21 @@ build: go-mod
 	operator-sdk build ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
 
 .PHONY: generate
-generate: go-mod
+generate: controller-gen go-mod
 	./hack/update-codegen.sh
-	operator-sdk generate k8s
-	operator-sdk generate crds
+	$(CONTROLLER_GEN) object:headerFile=hack/boilerplate.go.txt paths=./pkg/...
+	$(CONTROLLER_GEN) crd:crdVersions=v1 output:crd:artifacts:config=deploy/crds paths=./pkg/...
+	mv deploy/crds/verrazzano.io_helidonapps.yaml deploy/crds/verrazzano.io_helidonapps_crd.yaml
 	./hack/add-crd-header.sh
+
+.PHONY: controller-gen
+controller-gen:
+	go get sigs.k8s.io/controller-tools/cmd/controller-gen@v0.4.1
+ifeq (, $(shell which controller-gen))
+CONTROLLER_GEN=$(GOBIN)/controller-gen
+else
+CONTROLLER_GEN=$(shell which controller-gen)
+endif
 
 .PHONY: push
 push: build
